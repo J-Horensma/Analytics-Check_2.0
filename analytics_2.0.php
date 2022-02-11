@@ -36,7 +36,7 @@
 /*https://ipinfo.io/signup                            */"\r\n";
 /*FOR API ACCESS, TO THE CITY, REGION, AND COUNTRY    */"\r\n";
 /*VARIABLES, BELOW, THEN ADD YOUR API KEY, ON LINE    */"\r\n";
-/*163.                                                */"\r\n";
+/*165.                                                */"\r\n";
 /*////////////////////////////////////////////////////*/"\r\n";
 /*CITY:                 //$city                       */"\r\n";
 /*REGION:               //$region                     */"\r\n";
@@ -114,9 +114,11 @@ preg_match("/(?<=OS ).*?(?=[ ])/s", $UA, $OS_version);
 $device='iPhone';$OS='iOS';$OS_version=str_replace('_','.',$OS_version[0]);}
 else if(str_contains($UA, 'iPod')){
 /*IF iPOD##############################################################*/"\r\n";
+preg_match("/(?<=OS ).*?(?=[ ])/s", $UA, $OS_version);
 $device='iPod';$OS='iOS';$OS_version=str_replace('_','.',$OS_version[0]);}
 else if(str_contains($UA, 'iPad')){
 /*IF iPAD##############################################################*/"\r\n";
+preg_match("/(?<=CPU OS ).*?(?=[ ])/s", $UA, $OS_version);
 $device='iPad';$OS='iOS';$OS_version=str_replace('_','.',$OS_version[0]);}
 else if(str_contains($UA, 'Nokia')){
 /*IF NOKIA#############################################################*/"\r\n";
@@ -160,7 +162,7 @@ else if(isset($_SERVER['REMOTE_ADDR'])){$ip = $_SERVER['REMOTE_ADDR'];}
 /*COMMERCIAL USE WITH A FREE ACCOUNT ALLOWED*/"\r\n";
 /*UP TO 50,000 REQUEST/MONTH WITH A FREE ACCOUNT*/"\r\n";
 /*SET YOUR API TOKEN*/"\r\n";
-$token="YOUR API TOKEN, HERE";
+$token="ADD YOUR API KEY, HERE";
 $ipinfo=file_get_contents("https://ipinfo.io/".$ip."?token=". $token);
 $json=json_decode($ipinfo);
 $city=$json->city;
@@ -187,10 +189,14 @@ $resolution="<script>document.write(screen.width + ' ' + 'X' + ' ' + screen.heig
 /*  COOKIES ENABLED?   */"\r\n";
 /*/////////////////////*/"\r\n";
 $cookies="<script>document.write(navigator.cookieEnabled);</script>";
-if(isset($_SERVER['HTTP_USER_AGENT'])){
+if(isset($_SERVER['HTTP_USER_AGENT'])&&empty($browser)){
+/*RECHECK BROWSER*/"\r\n";
+if(str_contains($UA,'Safari')){$browser='Safari';}
+else if(str_contains($UA,'Windows')){$browser='Edge';}
+else if(str_contains($UA,'Chrome')){$browser='Chrome';}
 if(str_contains($UA, 'Firefox')){$browser='Firefox';}
 if(str_contains($UA,'Opera')){$browser='Opera';}
-else if(str_contains($UA,'OPR')){$browser='Opera';}  
+else if(str_contains($UA,'OPR')){$browser='Opera';}
 }
 /*IF UNKNOWN###########################################################*/"\r\n";
 if(empty($UA)){$UA='Unknown';}if(empty($device)){$device='Unknown';}
