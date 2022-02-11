@@ -3,7 +3,7 @@
 /*LIGHTER CODE THAN THE ORIGINAL*/"\r\n";
 /*AND MORE OPTIONS*/"\r\n";
 /*BY: JOEL HORENSMA*/"\r\n";
-/*LAST UPDATED: FEB 10/2022*/"\r\n";
+/*LAST UPDATED: FEB 11/2022*/"\r\n";
 /*USAGE:*/"\r\n";
 /*ADD HEADER BELOW IN HEAD SECTION OF PHP OR HTML*/"\r\n";
 /*SEND SEC-CH REQUEST HEADERS##########################################*/"\r\n";
